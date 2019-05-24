@@ -4,30 +4,32 @@ Rotate display with touch panel like tablet PC.
 
 ## Requirements
 
-ASUS Vivobook flip 12 TP203NA
-xubuntu 19.04
+- ASUS Vivobook flip 12 TP203NA
+- xubuntu 19.04
 
 ## Usage
 
-### Download
+###Installation
+
+#### Download
 
 ```
 git clone https://github.com/fllt/rotate-tabletpc.git
 ```
 
-### Fix variant
+#### Fix variant
 
 This script is written for my TP203NA.
 So, if you use on other devices,you need to fix some variants.
 
-#### Check id of input devices.
+##### Check id of input devices.
 
 
 ```
 $ xinput list
 ```
 
-Results on TP203NA
+Result on TP203NA
 
 ```
 ⎡ Virtual core pointer                    	id=2	[master pointer  (3)]
@@ -49,12 +51,12 @@ Results on TP203NA
 
     ↳ AT Translated Set 2 keyboard            	id=17	[slave  keyboard (3)]
 ```
-In this case, id=11 and id=18 are touchdisplay.(One is multi touch and another is stylus.) 
-Rotate them.
+In this case, id=11 and id=18 are need to rotate because they are touchdisplay.(One is multi touch and another is stylus.)
 
-id=13 is Touchpad under keybourd. This is unenable.(Because when TP203 flip keybourd,unenable keybourd but touchpad is not unenable).
+id=13 is need to disable because it is Touchpad under keybourd. (Key board is not enable. Because on TP203NA, keybourd is automatically disabled when it is tablet mode.)
 
-#### Check output display
+
+##### Check output display
 
 ```
 $ xrandr --listmonitors
@@ -69,9 +71,9 @@ Monitors: 1
 
 In this case, use *eDP-1* .
 Although, unlike input devices, it is hard to imagine that embedded more than one display.
-So, I think that basically you ca use *eDP-1* .
+So, I think that basically you can use *eDP-1* .
 
-#### Fix *rotate-tabletpc.sh* 
+##### Fix *rotate-tabletpc.sh*
 
 Fix berow section besed on checked values.
 
@@ -82,7 +84,7 @@ input_disable=(13) #Touchpad
 output="eDP-1"
 ```
 
-### Install
+#### Copy bash file
 
 
 ```
@@ -90,24 +92,18 @@ cd rotate-tabletpc
 cp rotate-tabletpc.sh ~/bin/
 ```
 
-### Execute
+### Run
 
 ```
 rotate-tabletpc.sh
 ```
 
+Whenever you run,  display rotation is switched between normal and left.
 
-
-With each execution, switching display rotation between normal and left.
-
-
-I recomend to set the comannd to keybourd shortcuts or Launcher. 
-
+I recomend to set the comannd to keybourd shortcuts or Launcher.
 
 ### Uninstall
 
 ```
 rm ~/bin/rotate-tabletpc
 ```
-
-
