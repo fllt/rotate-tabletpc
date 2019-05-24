@@ -1,5 +1,4 @@
-# rotate-like-tablet
-
+# rotate-tabletpc
 タブレットのように縦持ちできるよう、画面を回転させる｡
 
 ## 目的
@@ -30,6 +29,12 @@ git clone https://github.com/fllt/rotate-tabletpc.git
 
 ```
 $ xinput list
+```
+
+結果(TP203NA)
+
+```
+
 ⎡ Virtual core pointer                    	id=2	[master pointer  (3)]
 ⎜   ↳ Virtual core XTEST pointer              	id=4	[slave  pointer  (2)]
 ⎜   ↳ ELAN24C9:00 04F3:24C9                   	id=11	[slave  pointer  (2)]
@@ -49,14 +54,23 @@ $ xinput list
 
     ↳ AT Translated Set 2 keyboard            	id=17	[slave  keyboard (3)]
 ```
+
 今回の場合 *11* と *18* がタッチディスプレイでこれを回転させる｡ペン用とそうでないマルチタッチがそれぞれ別のデバイスとして認識されているようなので､どちらも回転させる｡
+
 また､ *13* はタッチパッドでこれは無効化する｡TP203NAの場合キーボードを裏返すとキーボードが無効化されるが､タッチパッドは無効化されなかったため｡
 
 #### 出力先の確認する
 出力先の名前を確認する｡
 
 ```
-$ xrandr --listmonitorsMonitors: 1
+$ xrandr --listmonitors
+
+```
+
+結果(TP203NA)
+
+```
+Monitors: 1
  0: +eDP-1 1366/256x768/144+0+0  eDP-1
 ```
 この場合 *eDP-1* を使う
