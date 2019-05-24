@@ -1,4 +1,5 @@
 #!/bin/bash
+# Version 1.0
 
 input_rotate=(11 18) #Touch display for finger and stylus
 input_disable=(13) #Touchpad
