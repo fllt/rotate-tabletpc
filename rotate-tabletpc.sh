@@ -1,14 +1,11 @@
 #!/bin/bash
 
-#シンプルに通常の画面をPCモード、縦画面をタブレットモードとして切り替える
+input_rotate=(11 18) #Touch display for finger and stylus
+input_disable=(13) #Touchpad
 
-#対象のデバイスのIDは　xinput list で確認
-
-input_rotate=(11 18)
-input_disable=(13)
 output="eDP-1"
 
-rotation=$(xrandr -q --verbose | grep $output | egrep -o "(normal|left)" | head -1)
+rotation=$(xrandr --verbose | grep $output | egrep -o "(normal|left)" | head -1)
 if [ "$rotation" = "normal" ] ; then
     xrandr --output $output --rotate left
     for var in ${input_rotate[@]};do
