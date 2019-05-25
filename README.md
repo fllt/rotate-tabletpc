@@ -9,7 +9,7 @@ Rotate display with touch panel like tablet PC.
 
 ## Usage
 
-###Installation
+### Installation
 
 #### Download
 
